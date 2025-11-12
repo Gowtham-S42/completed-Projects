@@ -1,0 +1,33 @@
+package Leetcode;
+ import java.util.*;
+// Balanced Brackets
+public class Z08 {
+      public static boolean isBalenced(String s) {
+    	  Stack<Character> stack=new Stack<Character>();
+    	  for(char ch:s.toCharArray()) {
+    		  switch (ch) {
+			case '(': case '[': case '{':
+				stack.push(ch);
+				break;
+			case ')':
+				if(stack.isEmpty() || stack.pop() !='(')
+					return false;
+				break;
+			case ']':
+				if(stack.isEmpty() || stack.pop() !='[')
+					return false;
+				break;
+			case '}':
+				if(stack.isEmpty() || stack.pop() !='{')
+					return false;
+				break;
+			}
+    	  }
+		return stack.isEmpty();	
+	}
+      public static void main(String[] args) {
+		String s="){}}{()[]"; 
+		
+		System.out.println(isBalenced(s) + "\n" + isBalenced("()[{{}}]"));
+	}      
+}
